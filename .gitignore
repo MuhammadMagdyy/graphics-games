@@ -1,0 +1,18 @@
+# Compiled executable
+Assignment_1
+
+# Object files
+*.o
+*.obj
+*.out
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+*.app
+
+# Build artifacts
+build/
+dist/
