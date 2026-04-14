@@ -4,13 +4,67 @@ This repository contains two interactive 3D games built with C++ and OpenGL/GLUT
 
 ## 🎮 Games Overview
 
-### 1. 3D Soccer Game (Assignment2.cpp)
-An interactive 3D soccer game where you control a player to kick a ball toward the goal by getting close to it, creating a realistic dribbling experience.
-
-### 2. Space Invaders Game (Assignment_1.cpp)
+### 1. Space Invaders Game (Assignment_1.cpp)
 A classic Space Invaders-style game where you control a spaceship to shoot down an enemy invader while avoiding enemy bullets.
 
+### 2. 3D Soccer Game (Assignment2.cpp)
+An interactive 3D soccer game where you control a player to kick a ball toward the goal by getting close to it, creating a realistic dribbling experience.
+
+
 ---
+
+## 👾 Space Invaders Game - Assignment_1.cpp
+
+### Features
+
+- **Player Controls**: Move with WASD or Arrow Keys
+- **Continuous Shooting**: Press Spacebar to fire green laser balls
+- **Enemy AI**: Enemy cube moves left and right autonomously and fires red bullets at intervals
+- **Collision Detection**:
+  - Hit detection between player bullets and enemy
+  - Contact collision to prevent touching the enemy
+  - Damage system for enemy bullets
+- **Health System**:
+  - Player has 3 health points (displayed as green cubes)
+  - Enemy has 20 health points (damage shown via health bar color)
+  - Enemy health bar changes color: green (high) → yellow (medium) → red (low)
+- **Power-Up Mechanics**:
+  - Pink cube power-up appears randomly on the map
+  - Lasts 5 seconds before disappearing
+  - Respawns in a different location after 2.5-second delay
+  - When collected, grants temporary invincibility
+- **Game States**:
+  - "Game Over" - displayed when player health reaches 0
+  - "You Won" - displayed when enemy health reaches 0
+  - Both appear on a black background with red text
+- **Boundaries**: Player is confined within screen borders
+
+### Space Invaders Controls
+
+- **WASD** or **Arrow Keys** - Move player spaceship
+- **Spacebar** - Shoot laser balls
+- **ESC** - Quit game
+
+### Space Invaders Building & Running
+
+#### Requirements
+- macOS with OpenGL support
+- GLUT framework
+- g++ compiler
+
+#### Compile
+```bash
+g++ -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/ \
+Assignment_1.cpp -framework OpenGL -framework GLUT -o Assignment_1
+```
+
+#### Run
+```bash
+./Assignment_1
+```
+
+---
+
 
 ## 🏆 3D Soccer Game - Assignment2.cpp
 
@@ -85,58 +139,6 @@ clang++ -std=gnu++14 -DGL_SILENCE_DEPRECATION -g Assignment2.cpp -o Assignment2 
 #### Run
 ```bash
 ./Assignment2
-```
-
----
-
-## 👾 Space Invaders Game - Assignment_1.cpp
-
-### Features
-
-- **Player Controls**: Move with WASD or Arrow Keys
-- **Continuous Shooting**: Press Spacebar to fire green laser balls
-- **Enemy AI**: Enemy cube moves left and right autonomously and fires red bullets at intervals
-- **Collision Detection**:
-  - Hit detection between player bullets and enemy
-  - Contact collision to prevent touching the enemy
-  - Damage system for enemy bullets
-- **Health System**:
-  - Player has 3 health points (displayed as green cubes)
-  - Enemy has 20 health points (damage shown via health bar color)
-  - Enemy health bar changes color: green (high) → yellow (medium) → red (low)
-- **Power-Up Mechanics**:
-  - Pink cube power-up appears randomly on the map
-  - Lasts 5 seconds before disappearing
-  - Respawns in a different location after 2.5-second delay
-  - When collected, grants temporary invincibility
-- **Game States**:
-  - "Game Over" - displayed when player health reaches 0
-  - "You Won" - displayed when enemy health reaches 0
-  - Both appear on a black background with red text
-- **Boundaries**: Player is confined within screen borders
-
-### Space Invaders Controls
-
-- **WASD** or **Arrow Keys** - Move player spaceship
-- **Spacebar** - Shoot laser balls
-- **ESC** - Quit game
-
-### Space Invaders Building & Running
-
-#### Requirements
-- macOS with OpenGL support
-- GLUT framework
-- g++ compiler
-
-#### Compile
-```bash
-g++ -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/ \
-Assignment_1.cpp -framework OpenGL -framework GLUT -o Assignment_1
-```
-
-#### Run
-```bash
-./Assignment_1
 ```
 
 ---
