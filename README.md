@@ -1,53 +1,88 @@
-# Space Invaders Game - OpenGL/GLUT
+# 3D Soccer Game - OpenGL/GLUT
 
-A classic Space Invaders-style game built with C++ and OpenGL/GLUT graphics library. The player controls a spaceship at the bottom of the screen and must shoot down an enemy invader cube while avoiding incoming enemy bullets.
+An interactive 3D soccer game built with C++ and OpenGL/GLUT graphics library. Control a player to kick a soccer ball toward the goal by getting close to the ball, creating a realistic dribbling experience.
 
 ## Features
 
-- **Player Controls**: Move with WASD or Arrow Keys
-- **Continuous Shooting**: Press Spacebar to fire green laser balls
-- **Enemy AI**: Enemy cube moves left and right autonomously and fires red bullets at intervals
-- **Collision Detection**: 
-  - Hit detection between player bullets and enemy
-  - Contact collision to prevent touching the enemy
-  - Damage system for enemy bullets
-- **Health System**: 
-  - Player has 3 health points (displayed as green cubes)
-  - Enemy has 20 health points (damage shown via health bar color)
-  - Enemy health bar changes color: green (high) → yellow (medium) → red (low)
-- **Power-Up Mechanics**:
-  - Pink cube power-up appears randomly on the map
-  - Lasts 5 seconds before disappearing
-  - Respawns in a different location after 2.5-second delay
-  - When collected, grants temporary invincibility
-- **Game States**:
-  - "Game Over" - displayed when player health reaches 0
-  - "You Won" - displayed when enemy health reaches 0
-  - Both appear on a black background with red text
-- **Boundaries**: Player is confined within screen borders
+- **3D Graphics**: Full 3D rendering with lighting, textures, and depth
+- **Player Controls**:
+  - `f` - Move forward toward ball/goal
+  - `b` - Move backward away from goal
+  - `r`/`l` - Move left/right
+- **Camera Controls**:
+  - `w`/`s` - Camera up/down
+  - `a`/`d` - Camera left/right
+  - `q`/`e` - Camera forward/backward
+  - Arrow keys - Camera rotation
+  - `1`/`2`/`3` - Preset camera views
+- **Realistic Ball Physics**:
+  - Ball only moves when player gets very close (within 0.1 units)
+  - Incremental kicking: ball moves 0.05 units per kick, then stops
+  - Player must repeatedly approach to advance the ball
+- **Game Elements**:
+  - Soccer field with green ground
+  - Goal net with posts and crossbar
+  - Corner flags and banners
+  - Trophy cup display
+- **Goal Scoring**:
+  - Ball must reach Z=0.0 to score
+  - Celebration screen with "GOALLLLLLLLLL!" message
+  - Goal counter display
+  - Game exits after 2 seconds
+- **Boundaries**: Player movement constrained within field limits
 
 ## Controls
 
-- **WASD** or **Arrow Keys** - Move player spaceship
-- **Spacebar** - Shoot laser balls
+### Player Movement
+- **`f`** - Move forward (toward ball/goal)
+- **`b`** - Move backward (away from goal)
+- **`r`** - Move left
+- **`l`** - Move right
+
+### Camera Controls
+- **`w`/`s`** - Camera up/down
+- **`a`/`d`** - Camera left/right
+- **`q`/`e`** - Camera forward/backward
+- **Arrow Keys** - Rotate camera
+- **`1`/`2`/`3`** - Preset views (corner, goal, side)
+
+### Other
 - **ESC** - Quit game
+
+## Gameplay
+
+1. Use `f` to move your blue player toward the black soccer ball
+2. Get very close to the ball (collision distance: 0.1 units)
+3. The ball will automatically kick forward 0.05 units toward the goal
+4. Repeat the process - approach, kick, approach, kick...
+5. Continue until the ball reaches the goal at Z=0.0
+6. Enjoy the celebration screen!
 
 ## Building & Running
 
 ### Requirements
 - macOS with OpenGL support
 - GLUT framework
-- g++ compiler
+- clang++ compiler
 
 ### Compile
 ```bash
-g++ -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/ \
-Assignment_1.cpp -framework OpenGL -framework GLUT -o Assignment_1
+clang++ -std=gnu++14 -DGL_SILENCE_DEPRECATION -g Assignment2.cpp -o Assignment2 -framework GLUT -framework OpenGL
 ```
 
 ### Run
 ```bash
-./Assignment_1
+./Assignment2
+```
+
+## Technical Details
+
+- **Language**: C++ with OpenGL/GLUT
+- **Graphics**: 3D perspective projection, lighting, materials
+- **Collision Detection**: Distance-based Euclidean calculation
+- **Rendering**: Single buffer mode with glFlush()
+- **Architecture**: Custom Vector3f and Camera classes
+- **Game Loop**: GLUT event-driven with display callbacks
 ```
 
 ## Game Mechanics
