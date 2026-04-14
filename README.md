@@ -1,8 +1,20 @@
-# 3D Soccer Game - OpenGL/GLUT
+# Graphics Games Collection
 
-An interactive 3D soccer game built with C++ and OpenGL/GLUT graphics library. Control a player to kick a soccer ball toward the goal by getting close to the ball, creating a realistic dribbling experience.
+This repository contains two interactive 3D games built with C++ and OpenGL/GLUT graphics library:
 
-## Features
+## 🎮 Games Overview
+
+### 1. 3D Soccer Game (Assignment2.cpp)
+An interactive 3D soccer game where you control a player to kick a ball toward the goal by getting close to it, creating a realistic dribbling experience.
+
+### 2. Space Invaders Game (Assignment_1.cpp)
+A classic Space Invaders-style game where you control a spaceship to shoot down an enemy invader while avoiding enemy bullets.
+
+---
+
+## 🏆 3D Soccer Game - Assignment2.cpp
+
+### Features
 
 - **3D Graphics**: Full 3D rendering with lighting, textures, and depth
 - **Player Controls**:
@@ -31,25 +43,25 @@ An interactive 3D soccer game built with C++ and OpenGL/GLUT graphics library. C
   - Game exits after 2 seconds
 - **Boundaries**: Player movement constrained within field limits
 
-## Controls
+### Soccer Game Controls
 
-### Player Movement
+#### Player Movement
 - **`f`** - Move forward (toward ball/goal)
 - **`b`** - Move backward (away from goal)
 - **`r`** - Move left
 - **`l`** - Move right
 
-### Camera Controls
+#### Camera Controls
 - **`w`/`s`** - Camera up/down
 - **`a`/`d`** - Camera left/right
 - **`q`/`e`** - Camera forward/backward
 - **Arrow Keys** - Rotate camera
 - **`1`/`2`/`3`** - Preset views (corner, goal, side)
 
-### Other
+#### Other
 - **ESC** - Quit game
 
-## Gameplay
+### Soccer Gameplay
 
 1. Use `f` to move your blue player toward the black soccer ball
 2. Get very close to the ball (collision distance: 0.1 units)
@@ -58,31 +70,97 @@ An interactive 3D soccer game built with C++ and OpenGL/GLUT graphics library. C
 5. Continue until the ball reaches the goal at Z=0.0
 6. Enjoy the celebration screen!
 
-## Building & Running
+### Soccer Building & Running
 
-### Requirements
+#### Requirements
 - macOS with OpenGL support
 - GLUT framework
 - clang++ compiler
 
-### Compile
+#### Compile
 ```bash
 clang++ -std=gnu++14 -DGL_SILENCE_DEPRECATION -g Assignment2.cpp -o Assignment2 -framework GLUT -framework OpenGL
 ```
 
-### Run
+#### Run
 ```bash
 ./Assignment2
 ```
 
-## Technical Details
+---
 
+## 👾 Space Invaders Game - Assignment_1.cpp
+
+### Features
+
+- **Player Controls**: Move with WASD or Arrow Keys
+- **Continuous Shooting**: Press Spacebar to fire green laser balls
+- **Enemy AI**: Enemy cube moves left and right autonomously and fires red bullets at intervals
+- **Collision Detection**:
+  - Hit detection between player bullets and enemy
+  - Contact collision to prevent touching the enemy
+  - Damage system for enemy bullets
+- **Health System**:
+  - Player has 3 health points (displayed as green cubes)
+  - Enemy has 20 health points (damage shown via health bar color)
+  - Enemy health bar changes color: green (high) → yellow (medium) → red (low)
+- **Power-Up Mechanics**:
+  - Pink cube power-up appears randomly on the map
+  - Lasts 5 seconds before disappearing
+  - Respawns in a different location after 2.5-second delay
+  - When collected, grants temporary invincibility
+- **Game States**:
+  - "Game Over" - displayed when player health reaches 0
+  - "You Won" - displayed when enemy health reaches 0
+  - Both appear on a black background with red text
+- **Boundaries**: Player is confined within screen borders
+
+### Space Invaders Controls
+
+- **WASD** or **Arrow Keys** - Move player spaceship
+- **Spacebar** - Shoot laser balls
+- **ESC** - Quit game
+
+### Space Invaders Building & Running
+
+#### Requirements
+- macOS with OpenGL support
+- GLUT framework
+- g++ compiler
+
+#### Compile
+```bash
+g++ -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/ \
+Assignment_1.cpp -framework OpenGL -framework GLUT -o Assignment_1
+```
+
+#### Run
+```bash
+./Assignment_1
+```
+
+---
+
+## 🛠 Technical Details
+
+### Common Requirements
 - **Language**: C++ with OpenGL/GLUT
-- **Graphics**: 3D perspective projection, lighting, materials
-- **Collision Detection**: Distance-based Euclidean calculation
-- **Rendering**: Single buffer mode with glFlush()
-- **Architecture**: Custom Vector3f and Camera classes
-- **Game Loop**: GLUT event-driven with display callbacks
+- **Platform**: macOS
+- **Graphics**: OpenGL immediate mode rendering
+- **Windowing**: GLUT for cross-platform window management
+
+### Architecture
+- **Soccer Game**: Custom Vector3f and Camera classes, distance-based collision detection
+- **Space Invaders**: 2D game with health systems, power-ups, and AI enemy movement
+- **Rendering**: Both use GLUT event-driven architecture with display callbacks
+
+### File Structure
+```
+├── Assignment_1.cpp    # Space Invaders game
+├── Assignment2.cpp     # 3D Soccer game
+├── README.md          # This documentation
+└── (compiled executables not included in repo)
+```
 ```
 
 ## Game Mechanics
